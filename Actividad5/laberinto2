@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+
+#define SIZE 10
+
+bool comprobarCoor(char **array, int dx, int dy){
+
+    if(dx < 0 || dy < 0 || dx > 9 || dy > 9 || (array[dy][dx] == '*')){
+        return false;
+    }
+    return true;
+}
+
+
+
+bool laberinto(char **array, y, x){
+
+ int dx = x;
+ int dy = y ;
+
+    if(comprobarCoor(array, dx,dy) == false){
+        return false;
+    }
+
+ return true;
+}
+
+int main(){
+ int x = 0;
+ int y = 0;
+ char **array;
+	array = new char*[SIZE];
+	
+	for(int i=0; i<SIZE; i++){
+        array[i] = new char[SIZE];
+    }
+
+    for(int i=0; i<SIZE; i++){
+        for(int j=0; j<SIZE; j++){
+            cin >> array[i][j];
+        }
+    }
+
+//printea laberinto
+    for(int i=0; i<SIZE; i++){
+        for(int j=0; j<SIZE; j++){
+            cout << array[i][j];
+        }
+        cout << endl;
+    }
+
+ //laberinto(array);
+
+ if(laberinto(array, y, x) == false){
+     cout << "INALCANZABLE" << endl;
+ }else{
+     //cout << "funciona" << endl;
+ }
+
+//printea laberinto completado
+    for(int i=0; i<SIZE; i++){
+        for(int j=0; j<SIZE; j++){
+            cout << array[i][j];
+        }
+        cout << endl;
+    }
+
+ return 0;
+}
